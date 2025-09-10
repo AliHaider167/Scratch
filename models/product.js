@@ -4,13 +4,13 @@ const productSchema = mongoose.Schema({
   name: String,
   price: Number,
   discount: {
-    Type: Number,
+    type: Number,
     default: 0,
   },
   bgcolor: String,
   panelcolor: String,
   textcolor: String,
-  image: String,
+  image: Buffer,
 });
 
 module.exports = mongoose.model("products", productSchema);
