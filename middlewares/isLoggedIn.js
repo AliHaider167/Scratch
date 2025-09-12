@@ -10,13 +10,13 @@ function isLoggedIn(req, res, next) {
   }
 
   try {
-    jwt.verify(token, process.env.JWT_SECRET, async (err, user) => {
+    jwt.verify(token, process.env.JWT_KEY, async (err, user) => {
       if (err) {
         return res.status(401).send("Unauthorized: Invalid token");
       }
 
       let availuser = await userModel
-        .findOne({ email: availuser.email })
+        .findOne({ email: user.email })
         .select("-password");
 
       req.user = availuser;

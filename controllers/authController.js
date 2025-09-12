@@ -49,7 +49,7 @@ const loginUser = async (req, res) => {
 
       const token = generateToken(user);
       res.cookie("token", token);
-      res.status(200).send("logged In Successfully");
+      res.redirect("/shop");
     });
   } catch (error) {
     res.status(500).send(error.message);
